@@ -1,22 +1,65 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, MouseEvent, useRef, useEffect } from "react";
 import { heroReel } from "@/data/works";
-import { Volume2, VolumeX } from "lucide-react";
+import { Volume2, VolumeX, RotateCcw } from "lucide-react";
 
 export function HeroReel() {
   const [muted, setMuted] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
-  const src = `https://www.youtube.com/embed/${heroReel.videoId}?autoplay=1&loop=1&playlist=${heroReel.videoId}&mute=${muted ? 1 : 0}&controls=0&modestbranding=1&playsinline=1&rel=0&showinfo=0&iv_load_policy=3`;
+  // Keep src stable to prevent iframe reloads when muted changes
+  const src = `https://www.youtube.com/embed/${heroReel.videoId}?autoplay=1&loop=1&playlist=${heroReel.videoId}&mute=1&controls=0&modestbranding=1&playsinline=1&rel=0&showinfo=0&iv_load_policy=3&enablejsapi=1`;
 
   const title = "EDITING REEL";
   const sub = "LILY FEARS";
 
+  // Control audio state via postMessage instead of recreating/reloading the iframe
+  useEffect(() => {
+    if (!iframeRef.current) return;
+    const command = muted ? "mute" : "unMute";
+    iframeRef.current.contentWindow?.postMessage(
+      JSON.stringify({ event: "command", func: command, args: "" }),
+      "*",
+    );
+  }, [muted]);
+
+  const handleVideoClick = (e: MouseEvent<HTMLElement>) => {
+    if ((e.target as HTMLElement).closest("button")) {
+      return;
+    }
+
+    if (!iframeRef.current) return;
+
+    setIsPlaying((prev) => {
+      const next = !prev;
+      const command = next ? "playVideo" : "pauseVideo";
+      iframeRef.current?.contentWindow?.postMessage(
+        JSON.stringify({ event: "command", func: command, args: "" }),
+        "*",
+      );
+      return next;
+    });
+  };
+
+  const handleRestartClick = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    if (!iframeRef.current) return;
+    iframeRef.current.contentWindow?.postMessage(
+      JSON.stringify({ event: "command", func: "seekTo", args: [0, true] }),
+      "*",
+    );
+  };
+
   return (
-    <section className="relative h-[100svh] w-full overflow-hidden bg-[color:var(--ink-bg)]">
+    <section
+      onClick={handleVideoClick}
+      className="relative h-[100svh] w-full overflow-hidden bg-[color:var(--ink-bg)]"
+    >
       {/* Video — cover via scale */}
       <div className="absolute inset-0">
         <iframe
-          key={String(muted)}
+          ref={iframeRef}
           src={src}
           title="Editing Reel"
           allow="autoplay; fullscreen; picture-in-picture"
@@ -74,13 +117,22 @@ export function HeroReel() {
       <div className="absolute bottom-6 left-6 z-10 font-mono text-[10px] uppercase tracking-[0.3em] text-[color:var(--ink-fg)]/60 md:bottom-8 md:left-10">
         <span className="inline-block animate-pulse">↓ scroll</span>
       </div>
-      <button
-        onClick={() => setMuted((m) => !m)}
-        className="absolute bottom-6 right-6 z-10 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-[color:var(--ink-fg)]/70 hover:text-[color:var(--ink-ember)] transition-colors md:bottom-8 md:right-10"
-      >
-        {muted ? <VolumeX className="size-3" /> : <Volume2 className="size-3" />}
-        sound {muted ? "off" : "on"}
-      </button>
+      <div className="absolute bottom-6 right-6 z-10 flex items-center gap-4 md:bottom-8 md:right-10">
+        <button
+          onClick={handleRestartClick}
+          className="flex items-center justify-center text-[color:var(--ink-fg)]/70 hover:text-[color:var(--ink-ember)] transition-colors"
+          aria-label="Restart video"
+        >
+          <RotateCcw className="size-3" />
+        </button>
+        <button
+          onClick={() => setMuted((m) => !m)}
+          className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-[color:var(--ink-fg)]/70 hover:text-[color:var(--ink-ember)] transition-colors"
+        >
+          {muted ? <VolumeX className="size-3" /> : <Volume2 className="size-3" />}
+          sound {muted ? "off" : "on"}
+        </button>
+      </div>
     </section>
   );
 }
