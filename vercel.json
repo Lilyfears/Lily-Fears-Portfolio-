@@ -1,0 +1,12 @@
+{
+  "framework": null,
+  "buildCommand": "bun run build",
+  "installCommand": "bun install",
+  "outputDirectory": ".vercel/output",
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "dist/server/server.js"
+    }
+  ]
+}
