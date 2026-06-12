@@ -27,7 +27,7 @@ export function Nav({ overHero = false }: { overHero?: boolean }) {
         </span>
         <ul className="flex items-center gap-6 font-mono text-[11px] uppercase tracking-[0.2em] text-[color:var(--ink-fg)]/70">
           <li><a href="#home" className={linkCls}>home</a></li>
-          <li><a href="#works" className={linkCls}>works</a></li>
+          <li><a href="#works" className={linkCls}>Selected Works</a></li>
           <li><a href="#contact" className={linkCls}>contact</a></li>
         </ul>
       </nav>
