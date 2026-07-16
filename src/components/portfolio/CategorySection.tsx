@@ -39,10 +39,7 @@ export function CategorySection({
   const layout = LAYOUTS[Math.min(n, 4) - 1] ?? LAYOUTS[3];
 
   return (
-    <section
-      id={category.id}
-      className="relative scroll-mt-24 px-6 py-10 md:px-12 md:py-14"
-    >
+    <section id={category.id} className="relative scroll-mt-24 px-6 py-10 md:px-12 md:py-14">
       {/* Section header */}
       <div className="mx-auto grid max-w-[1600px] grid-cols-12 gap-4 mb-6 md:mb-8">
         <div className="col-span-12 md:col-span-4">

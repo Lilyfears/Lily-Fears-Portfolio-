@@ -27,7 +27,7 @@ function sizeWorks(works: Work[]): Sized[] {
     const r = rand();
     let size: "sm" | "md" | "lg";
     if (w.orientation === "vertical") {
-      size = r < 0.5 ? "sm" : "md";
+      size = "md";
     } else {
       size = r < 0.33 ? "sm" : r < 0.75 ? "md" : "lg";
     }
@@ -40,7 +40,7 @@ const sized = sizeWorks(allWorks);
 // Width buckets (in % of container) per size + orientation.
 const widthFor = (s: Sized): string => {
   if (s.orientation === "vertical") {
-    return s.size === "sm" ? "14%" : "18%";
+    return "18%";
   }
   return s.size === "sm" ? "26%" : s.size === "md" ? "34%" : "44%";
 };
@@ -56,7 +56,7 @@ export function MosaicSection({ onOpen }: { onOpen: (w: Work) => void }) {
           <FloatingTile key={w.id + i} work={w} onOpen={onOpen} />
         ))}
       </div>
-      <div className="mt-6 flex flex-nowrap justify-center gap-6 md:mt-8 md:gap-8">
+      <div className="mt-6 flex flex-wrap md:flex-nowrap justify-center gap-6 md:mt-8 md:gap-8">
         {verticals.map((w, i) => (
           <FloatingTile key={w.id + i} work={w} onOpen={onOpen} />
         ))}
@@ -75,8 +75,8 @@ function FloatingTile({
   const [hover, setHover] = useState(false);
   const canHover =
     typeof window !== "undefined" &&
-    window.matchMedia("(hover: hover) and (prefers-reduced-motion: no-preference)")
-      .matches;
+    window.matchMedia("(hover: hover) and (prefers-reduced-motion: no-preference)").matches;
+  const poster = posterUrl(work);
 
   return (
     <button
@@ -93,13 +93,33 @@ function FloatingTile({
           work.orientation === "vertical" ? "aspect-[9/16]" : "aspect-video"
         }`}
       >
-        <img
-          src={posterUrl(work)}
-          alt=""
-          loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover brightness-[0.78] transition-[transform,filter] duration-[1200ms] ease-out group-hover:scale-[1.03] group-hover:brightness-100"
-        />
-        {hover && (
+        {work.platform === "mp4" ? (
+          <video
+            src={work.videoId}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover brightness-[0.78] transition-[transform,filter] duration-[1200ms] ease-out group-hover:scale-[1.03] group-hover:brightness-100"
+          />
+        ) : work.platform === "instagram" ? (
+          <iframe
+            src={embedUrl(work)}
+            title=""
+            tabIndex={-1}
+            aria-hidden
+            loading="lazy"
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover border-0 brightness-[0.78] transition-[transform,filter] duration-[1200ms] ease-out group-hover:scale-[1.03] group-hover:brightness-100"
+          />
+        ) : poster ? (
+          <img
+            src={poster}
+            alt=""
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover brightness-[0.78] transition-[transform,filter] duration-[1200ms] ease-out group-hover:scale-[1.03] group-hover:brightness-100"
+          />
+        ) : null}
+        {hover && work.platform !== "instagram" && work.platform !== "mp4" && (
           <iframe
             src={embedUrl(work, { preview: true })}
             title=""

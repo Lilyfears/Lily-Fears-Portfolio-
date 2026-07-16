@@ -21,6 +21,7 @@ html,
 body {
   background-color: var(--ink-bg);
   color: var(--ink-fg);
+  overflow-x: hidden;
 }
 
 ::selection {

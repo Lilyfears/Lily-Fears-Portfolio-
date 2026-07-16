@@ -30,13 +30,35 @@ export function VideoTile({
       <div
         className={`relative w-full ${work.orientation === "vertical" ? "aspect-[9/16]" : "aspect-video"}`}
       >
-        <img
-          src={posterUrl(work)}
-          alt={work.title ?? "Video thumbnail"}
-          loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover transition-[transform,filter] duration-[1200ms] ease-out group-hover:scale-[1.02] brightness-90 group-hover:brightness-100"
-        />
-        {hover && (
+        {work.platform === "mp4" ? (
+          <video
+            src={work.videoId}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover brightness-90 transition-[transform,filter] duration-[1200ms] ease-out group-hover:scale-[1.02] group-hover:brightness-100"
+          />
+        ) : work.platform === "instagram" ? (
+          <iframe
+            src={embedUrl(work)}
+            title=""
+            tabIndex={-1}
+            aria-hidden
+            loading="lazy"
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover border-0 brightness-90 transition-[transform,filter] duration-[1200ms] ease-out group-hover:scale-[1.02] group-hover:brightness-100"
+          />
+        ) : (
+          posterUrl(work) && (
+            <img
+              src={posterUrl(work)!}
+              alt={work.title ?? "Video thumbnail"}
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover transition-[transform,filter] duration-[1200ms] ease-out group-hover:scale-[1.02] brightness-90 group-hover:brightness-100"
+            />
+          )
+        )}
+        {hover && work.platform !== "instagram" && work.platform !== "mp4" && (
           <iframe
             src={embedUrl(work, { preview: true })}
             title=""
