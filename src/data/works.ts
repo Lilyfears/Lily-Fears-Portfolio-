@@ -19,11 +19,49 @@ export type Category = {
   items: Work[];
 };
 
+export type TileSize = "sm" | "md" | "lg";
+
+export type MosaicRow = {
+  videos: Array<{ id: string; size: TileSize }>;
+};
+
 export const heroReel = {
   platform: "mp4" as const,
   videoId: "/videos/main-reel.mp4",
   title: "Editing Reel",
 };
+
+// Explicit row-based layout for horizontal gallery
+export const horizontalGalleryRows: MosaicRow[] = [
+  {
+    videos: [
+      { id: "kZqPIIBZ4tg", size: "md" },
+      { id: "Ma-RHYU3LOA", size: "md" },
+      { id: "6bqtZcvfuws", size: "md" },
+    ],
+  },
+  {
+    videos: [
+      { id: "6UIHj_-YPEE", size: "md" },
+      { id: "2QSdVPY2688", size: "md" },
+      { id: "Sry0blCEB8U", size: "sm" },
+    ],
+  },
+  {
+    videos: [
+      { id: "SdtKDy8-Ph4", size: "sm" },
+      { id: "u4gEBRSKi2E", size: "md" },
+      { id: "BlpiRAAVB1A", size: "md" },
+    ],
+  },
+  {
+    videos: [
+      { id: "3Eu80w5W2GI", size: "sm" },
+      { id: "k94sfLpRTpY", size: "sm" },
+      { id: "DbSah0vwwrU", size: "md" },
+    ],
+  },
+];
 
 export const categories: Category[] = [
   {
@@ -67,6 +105,7 @@ export const categories: Category[] = [
       { id: "BlpiRAAVB1A", platform: "youtube", videoId: "BlpiRAAVB1A", orientation: "horizontal" },
       { id: "3Eu80w5W2GI", platform: "youtube", videoId: "3Eu80w5W2GI", orientation: "horizontal" },
       { id: "k94sfLpRTpY", platform: "youtube", videoId: "k94sfLpRTpY", orientation: "horizontal" },
+      { id: "DbSah0vwwrU", platform: "youtube", videoId: "DbSah0vwwrU", orientation: "horizontal" },
     ],
   },
   {

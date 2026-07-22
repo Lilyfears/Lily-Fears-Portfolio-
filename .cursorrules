@@ -1,0 +1,14 @@
+This project is a fully static Vite + React site deployed on Vercel.
+
+Rules:
+
+Never reintroduce SSR, TanStack Start, Nitro, or any server-side rendering
+Always keep build output as dist/
+The entry point must remain index.html in the project root
+Must always use vite build (not bun, not custom server builds)
+Vercel deployment must remain static (no server functions)
+Do not add or modify server/ folder or server entry files
+All routing must be client-side only (React Router / TanStack Router if used)
+Any changes must preserve successful npm run build
+
+If unsure, prefer the simplest static Vite solution.
