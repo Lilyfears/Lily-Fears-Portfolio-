@@ -23,18 +23,18 @@ export default function App() {
           <HeroReel />
         </section>
 
-        <section id="works" className="scroll-mt-20 pt-16">
+        <section id="works" className="scroll-mt-20 pt-8 md:pt-16">
           <MosaicSection onOpen={setOpen} />
         </section>
 
         {categories.find(c => c.id === "shorts") && (
-          <section id="shorts" className="scroll-mt-20 pt-8">
+          <section id="shorts" className="scroll-mt-20 pt-4 md:pt-8">
             <ShortsSection category={categories.find(c => c.id === "shorts")!} onOpen={setOpen} />
           </section>
         )}
 
         <section id="contact" className="scroll-mt-20">
-          <div className="mx-auto flex max-w-[680px] flex-col justify-center px-6 py-20 md:px-0">
+          <div className="mx-auto flex max-w-[680px] flex-col justify-center px-6 py-10 md:py-20 md:px-0">
             <ul className="grid gap-6 font-mono text-[11px] uppercase tracking-[0.25em] text-[color:var(--ink-fg)]/70">
               <li className="flex items-baseline justify-between gap-4">
                 <span className="text-[color:var(--ink-fg)]/40">email</span>
@@ -54,7 +54,7 @@ export default function App() {
         </section>
       </main>
 
-      <footer className="mx-auto max-w-[1600px] px-6 py-10 text-center md:px-12">
+      <footer className="hidden md:block mx-auto max-w-[1600px] px-6 py-10 text-center md:px-12">
         <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-[color:var(--ink-fg)]/40">
           EMOTION•STORYTELLING•RHYTHM
         </div>

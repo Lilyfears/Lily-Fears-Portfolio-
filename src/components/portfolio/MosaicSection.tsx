@@ -11,19 +11,20 @@ const widthFor = (size: TileSize): string => {
 
 export function MosaicSection({ onOpen }: { onOpen: (w: Work) => void }) {
   return (
-    <div className="mx-auto max-w-[1500px] px-4 pb-16 pt-8 md:px-10">
-      {/* Horizontal gallery with explicit row layout */}
-      {horizontalGalleryRows.map((row, rowIndex) => (
-        <div key={rowIndex} className="flex justify-center gap-6 md:gap-8 mb-6 md:mb-8">
-          {row.videos.map(({ id, size }) => {
-            const work = workById.get(id);
-            if (!work) return null;
-            return (
-              <FloatingTile key={id} work={work} size={size} onOpen={onOpen} />
-            );
-          })}
-        </div>
-      ))}
+    <div className="mx-auto max-w-[1500px] px-4 pb-8 pt-4 md:pb-16 md:pt-8 md:px-10">
+      <div className="grid grid-cols-2 gap-4 md:block md:gap-0">
+        {horizontalGalleryRows.map((row, rowIndex) => (
+          <div key={rowIndex} className="contents md:flex md:justify-center md:gap-8 md:mb-8">
+            {row.videos.map(({ id, size }) => {
+              const work = workById.get(id);
+              if (!work) return null;
+              return (
+                <FloatingTile key={id} work={work} size={size} onOpen={onOpen} />
+              );
+            })}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
