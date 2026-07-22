@@ -2,9 +2,17 @@
 @import "tw-animate-css";
 @source "../src";
 
+@font-face {
+  font-family: "RX100";
+  src: url("/fonts/RX100-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
 @theme {
   --font-serif: "Fraunces", ui-serif, Georgia, serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-rx100: "RX100";
 }
 
 :root {

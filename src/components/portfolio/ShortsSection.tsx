@@ -13,7 +13,7 @@ export function ShortsSection({
     <section id={category.id} className="relative scroll-mt-24 px-6 py-7 md:px-12 md:py-20 overflow-hidden">
       <div className="mx-auto grid max-w-[1600px] grid-cols-12 gap-4 mb-8 md:mb-12">
         <div className="col-span-12 md:col-span-4">
-          <h2 className="font-serif text-4xl italic leading-[0.95] text-[color:var(--ink-fg)] md:text-6xl md:whitespace-nowrap">
+          <h2 className="font-rx100 text-4xl italic leading-[0.95] text-[color:var(--ink-fg)] md:text-6xl md:whitespace-nowrap">
             {category.title === "Digital / Social Content" ? (
               <><span className="hidden md:inline">Digital / </span>Social Content</>
             ) : (

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState, MouseEvent, useRef, useEffect } from "react";
 import { heroReel, posterUrl } from "@/data/works";
 import { Volume2, VolumeX, Play, Pause } from "lucide-react";
@@ -11,6 +11,15 @@ export function HeroReel() {
 
   const title = "EDITING REEL";
   const sub = "LILY FEARS";
+
+  const [showTitle, setShowTitle] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowTitle(false);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Control audio state
   useEffect(() => {
@@ -82,39 +91,46 @@ export function HeroReel() {
       />
 
       {/* Title */}
-      {muted && (
-        <div className="relative z-10 hidden h-full flex-col items-center justify-center px-6 text-center md:flex">
+      <AnimatePresence>
+        {showTitle && muted && (
           <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 1.2 }}
-            className="font-mono text-[10px] uppercase tracking-[0.4em] text-[color:var(--ink-fg)]/70"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1 }}
+            className="relative z-10 hidden h-full flex-col items-center justify-center px-6 text-center md:flex"
           >
-            <br />
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 1.2 }}
+              className="font-mono text-[10px] uppercase tracking-[0.4em] text-[color:var(--ink-fg)]/70"
+            >
+              <br />
+            </motion.div>
+            <h1 className="mt-6 whitespace-nowrap font-rx100 text-[14vw] italic leading-[0.9] text-[color:var(--ink-fg)] md:text-[8rem]">
+              {title.split("").map((ch, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, y: "60%" }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 + i * 0.04, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                  className="inline-block"
+                >
+                  {ch === " " ? "\u00A0" : ch}
+                </motion.span>
+              ))}
+            </h1>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2, duration: 1 }}
+              className="mt-6 font-mono text-[11px] uppercase tracking-[0.3em] text-[color:var(--ink-fg)]/60"
+            >
+              {sub}
+            </motion.div>
           </motion.div>
-          <h1 className="mt-6 whitespace-nowrap font-serif text-[14vw] italic leading-[0.9] text-[color:var(--ink-fg)] md:text-[8rem]">
-            {title.split("").map((ch, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0, y: "60%" }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 + i * 0.04, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                className="inline-block"
-              >
-                {ch === " " ? "\u00A0" : ch}
-              </motion.span>
-            ))}
-          </h1>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.4, duration: 1 }}
-            className="mt-6 font-mono text-[11px] uppercase tracking-[0.3em] text-[color:var(--ink-fg)]/60"
-          >
-            {sub}
-          </motion.div>
-        </div>
-      )}
+        )}
+      </AnimatePresence>
 
       {/* Controls */}
       <div className="absolute bottom-6 left-6 z-10 font-mono text-[10px] uppercase tracking-[0.3em] text-[color:var(--ink-fg)]/60 md:bottom-8 md:left-10">

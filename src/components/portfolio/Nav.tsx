@@ -21,7 +21,7 @@ export function Nav({ overHero = false }: { overHero?: boolean }) {
       }`}
     >
       <nav className="mx-auto flex flex-col md:flex-row max-w-[1600px] items-center justify-between gap-3 px-6 py-4 md:py-5 md:px-10">
-        <span className="font-serif text-base text-center italic tracking-tight text-[color:var(--ink-ember)] transition-colors">
+        <span className="font-rx100 text-base text-center italic tracking-tight text-[color:var(--ink-ember)] transition-colors">
           Lily Xiajin Fears • Editor
         </span>
         <ul className="flex flex-wrap justify-center items-center gap-4 md:gap-6 font-mono text-[11px] uppercase tracking-[0.2em] text-[color:var(--ink-fg)]/70">

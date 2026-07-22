@@ -46,7 +46,7 @@ export function CategorySection({
           <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-[color:var(--ink-fg)]/40">
             — {category.index}
           </div>
-          <h2 className="mt-4 font-serif text-4xl italic leading-[0.95] text-[color:var(--ink-fg)] md:text-6xl">
+          <h2 className="mt-4 font-rx100 text-4xl italic leading-[0.95] text-[color:var(--ink-fg)] md:text-6xl">
             {category.title}
           </h2>
           {category.kicker && (
