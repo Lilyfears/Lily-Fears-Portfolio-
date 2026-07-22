@@ -72,8 +72,8 @@ export const categories: Category[] = [
   {
     id: "shorts",
     index: "05",
-    title: "Digital / Shorts",
-    kicker: "FILM ADVERTISING",
+    title: "Digital / Social Content",
+    kicker: "FILM/TV ADVERTISING",
     items: [
       {
         id: "DMVy9S0KB-9",
@@ -103,6 +103,36 @@ export const categories: Category[] = [
         id: "DZ3E5VWBOMQ",
         platform: "mp4",
         videoId: "/reels/converted-reel-DZ3E5VWBOMQ.mp4",
+        orientation: "vertical",
+      },
+      {
+        id: "dogman_h264",
+        platform: "mp4",
+        videoId: "/reels/dogman_h264.mp4",
+        orientation: "vertical",
+      },
+      {
+        id: "fearfactor",
+        platform: "mp4",
+        videoId: "/reels/fearfactor.mp4",
+        orientation: "vertical",
+      },
+      {
+        id: "songsungblue",
+        platform: "mp4",
+        videoId: "/reels/songsungblue.mp4",
+        orientation: "vertical",
+      },
+      {
+        id: "PowerBallad",
+        platform: "mp4",
+        videoId: "/reels/PowerBallad.mp4",
+        orientation: "vertical",
+      },
+      {
+        id: "republicans-debate",
+        platform: "mp4",
+        videoId: "/reels/28 Years Later Digital.mp4",
         orientation: "vertical",
       },
     ],

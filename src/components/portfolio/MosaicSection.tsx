@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { categories, embedUrl, posterUrl, type Work } from "@/data/works";
 
-const allWorks: Work[] = categories.flatMap((c) => c.items);
+const allWorks: Work[] = categories.filter(c => c.id !== "shorts").flatMap((c) => c.items);
 
 function seeded(seed: string): () => number {
   let h = 2166136261;
@@ -50,7 +50,7 @@ const verticals = sized.filter((w) => w.orientation === "vertical");
 
 export function MosaicSection({ onOpen }: { onOpen: (w: Work) => void }) {
   return (
-    <div className="mx-auto max-w-[1500px] px-4 pb-32 pt-8 md:px-10">
+    <div className="mx-auto max-w-[1500px] px-4 pb-16 pt-8 md:px-10">
       <div className="flex flex-wrap justify-center gap-6 md:gap-8">
         {horizontals.map((w, i) => (
           <FloatingTile key={w.id + i} work={w} onOpen={onOpen} />

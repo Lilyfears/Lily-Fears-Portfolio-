@@ -3,8 +3,9 @@ import { HeroReel } from "@/components/portfolio/HeroReel";
 import { Nav } from "@/components/portfolio/Nav";
 import { GrainOverlay } from "@/components/portfolio/GrainOverlay";
 import { MosaicSection } from "@/components/portfolio/MosaicSection";
+import { ShortsSection } from "@/components/portfolio/ShortsSection";
 import { VideoModal } from "@/components/portfolio/VideoModal";
-import { type Work } from "@/data/works";
+import { type Work, categories } from "@/data/works";
 
 export default function App() {
   const [open, setOpen] = useState<Work | null>(null);
@@ -25,6 +26,12 @@ export default function App() {
         <section id="works" className="scroll-mt-20 pt-16">
           <MosaicSection onOpen={setOpen} />
         </section>
+
+        {categories.find(c => c.id === "shorts") && (
+          <section id="shorts" className="scroll-mt-20 pt-8">
+            <ShortsSection category={categories.find(c => c.id === "shorts")!} onOpen={setOpen} />
+          </section>
+        )}
 
         <section id="contact" className="scroll-mt-20">
           <div className="mx-auto flex max-w-[680px] flex-col justify-center px-6 py-20 md:px-0">

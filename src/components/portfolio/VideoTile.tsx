@@ -25,10 +25,10 @@ export function VideoTile({
       onMouseEnter={() => canHover && setHover(true)}
       onMouseLeave={() => setHover(false)}
       aria-label={`Play ${work.title ?? "video"}`}
-      className={`group relative block w-full overflow-hidden bg-[color:var(--ink-bg)] focus:outline-none focus-visible:ring-1 focus-visible:ring-[color:var(--ink-ember)] ${className}`}
+      className={`group relative block w-full min-w-0 overflow-hidden bg-[color:var(--ink-bg)] focus:outline-none focus-visible:ring-1 focus-visible:ring-[color:var(--ink-ember)] ${className}`}
     >
       <div
-        className={`relative w-full ${work.orientation === "vertical" ? "aspect-[9/16]" : "aspect-video"}`}
+        className={`relative w-full min-w-0 ${work.orientation === "vertical" ? "aspect-[9/16]" : "aspect-video"}`}
       >
         {work.platform === "mp4" ? (
           <video
@@ -37,7 +37,7 @@ export function VideoTile({
             muted
             loop
             playsInline
-            className="pointer-events-none absolute inset-0 h-full w-full object-cover brightness-90 transition-[transform,filter] duration-[1200ms] ease-out group-hover:scale-[1.02] group-hover:brightness-100"
+            className="pointer-events-none absolute inset-0 h-full w-full min-w-0 object-cover brightness-90 transition-[transform,filter] duration-[1200ms] ease-out group-hover:scale-[1.02] group-hover:brightness-100"
           />
         ) : work.platform === "instagram" ? (
           <iframe
@@ -46,7 +46,7 @@ export function VideoTile({
             tabIndex={-1}
             aria-hidden
             loading="lazy"
-            className="pointer-events-none absolute inset-0 h-full w-full object-cover border-0 brightness-90 transition-[transform,filter] duration-[1200ms] ease-out group-hover:scale-[1.02] group-hover:brightness-100"
+            className="pointer-events-none absolute inset-0 h-full w-full min-w-0 object-cover border-0 brightness-90 transition-[transform,filter] duration-[1200ms] ease-out group-hover:scale-[1.02] group-hover:brightness-100"
           />
         ) : (
           posterUrl(work) && (
@@ -54,7 +54,7 @@ export function VideoTile({
               src={posterUrl(work)!}
               alt={work.title ?? "Video thumbnail"}
               loading="lazy"
-              className="absolute inset-0 h-full w-full object-cover transition-[transform,filter] duration-[1200ms] ease-out group-hover:scale-[1.02] brightness-90 group-hover:brightness-100"
+              className="absolute inset-0 h-full w-full min-w-0 object-cover transition-[transform,filter] duration-[1200ms] ease-out group-hover:scale-[1.02] brightness-90 group-hover:brightness-100"
             />
           )
         )}
