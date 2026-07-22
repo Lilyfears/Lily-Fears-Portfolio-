@@ -97,7 +97,7 @@ export function HeroReel() {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1 }}
-            className="relative z-10 hidden h-full flex-col items-center justify-center px-6 text-center md:flex"
+            className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center"
           >
             <motion.div
               initial={{ opacity: 0, y: 8 }}
@@ -107,7 +107,7 @@ export function HeroReel() {
             >
               <br />
             </motion.div>
-            <h1 className="mt-6 whitespace-nowrap font-rx100 text-[14vw] italic leading-[0.9] text-[color:var(--ink-fg)] md:text-[8rem]">
+            <h1 className="mt-6 font-rx100 text-[10vw] sm:text-[14vw] italic leading-[0.9] text-[color:var(--ink-fg)] md:text-[8rem] whitespace-nowrap">
               {title.split("").map((ch, i) => (
                 <motion.span
                   key={i}
