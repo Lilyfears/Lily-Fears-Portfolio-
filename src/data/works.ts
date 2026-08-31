@@ -35,30 +35,44 @@ export const heroReel = {
 export const horizontalGalleryRows: MosaicRow[] = [
   {
     videos: [
+      { id: "jw9u9pgFNDw", size: "md" },
       { id: "kZqPIIBZ4tg", size: "md" },
       { id: "Ma-RHYU3LOA", size: "md" },
-      { id: "6bqtZcvfuws", size: "md" },
     ],
   },
   {
     videos: [
+      { id: "6bqtZcvfuws", size: "md" },
       { id: "6UIHj_-YPEE", size: "md" },
       { id: "2QSdVPY2688", size: "md" },
-      { id: "Sry0blCEB8U", size: "sm" },
     ],
   },
   {
     videos: [
+      { id: "Sry0blCEB8U", size: "sm" },
+      { id: "GXHiis7Zt8I", size: "md" },
       { id: "SdtKDy8-Ph4", size: "sm" },
+    ],
+  },
+  {
+    videos: [
       { id: "u4gEBRSKi2E", size: "md" },
       { id: "BlpiRAAVB1A", size: "md" },
+      { id: "3Eu80w5W2GI", size: "sm" },
     ],
   },
   {
     videos: [
-      { id: "3Eu80w5W2GI", size: "sm" },
       { id: "k94sfLpRTpY", size: "sm" },
       { id: "DbSah0vwwrU", size: "md" },
+      { id: "0QCCS2eP3Q0", size: "md" },
+    ],
+  },
+  {
+    videos: [
+      { id: "_a0d95ewlzY", size: "md" },
+      { id: "yW-ZpSDu_b4", size: "md" },
+      { id: "4RIzWIqF5s8", size: "md" },
     ],
   },
 ];
@@ -106,6 +120,20 @@ export const categories: Category[] = [
       { id: "3Eu80w5W2GI", platform: "youtube", videoId: "3Eu80w5W2GI", orientation: "horizontal" },
       { id: "k94sfLpRTpY", platform: "youtube", videoId: "k94sfLpRTpY", orientation: "horizontal" },
       { id: "DbSah0vwwrU", platform: "youtube", videoId: "DbSah0vwwrU", orientation: "horizontal" },
+    ],
+  },
+  {
+    id: "featured",
+    index: "00",
+    title: "Featured",
+    kicker: "NEW WORK",
+    items: [
+      { id: "jw9u9pgFNDw", platform: "youtube", videoId: "jw9u9pgFNDw", orientation: "horizontal" },
+      { id: "GXHiis7Zt8I", platform: "youtube", videoId: "GXHiis7Zt8I", orientation: "horizontal" },
+      { id: "4RIzWIqF5s8", platform: "youtube", videoId: "4RIzWIqF5s8", orientation: "horizontal" },
+      { id: "0QCCS2eP3Q0", platform: "youtube", videoId: "0QCCS2eP3Q0", orientation: "horizontal" },
+      { id: "_a0d95ewlzY", platform: "youtube", videoId: "_a0d95ewlzY", orientation: "horizontal" },
+      { id: "yW-ZpSDu_b4", platform: "youtube", videoId: "yW-ZpSDu_b4", orientation: "horizontal" },
     ],
   },
   {

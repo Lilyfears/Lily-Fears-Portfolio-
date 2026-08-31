@@ -107,7 +107,7 @@ export function HeroReel() {
             >
               <br />
             </motion.div>
-            <h1 className="mt-6 font-rx100 text-[10vw] sm:text-[14vw] italic leading-[0.9] text-[color:var(--ink-fg)] md:text-[8rem] whitespace-nowrap">
+            <h1 className="mt-6 font-serif text-[10vw] sm:text-[14vw] italic leading-[0.9] text-[color:var(--ink-fg)] md:text-[8rem] whitespace-nowrap">
               {title.split("").map((ch, i) => (
                 <motion.span
                   key={i}
