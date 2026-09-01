@@ -55,7 +55,7 @@ export function VideoModal({
                 />
               )}
             </div>
-            {work.orientation === "horizontal" && work.title && (
+            {work.title && (
               <div
                 onClick={(e) => e.stopPropagation()}
                 className="pointer-events-auto mt-3 w-full max-w-[min(1600px,calc(100vh-8rem)*16/9)] font-mono text-[11px] uppercase tracking-[0.2em] text-white/60"

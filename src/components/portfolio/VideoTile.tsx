@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { embedUrl, posterUrl, type Work } from "@/data/works";
-import { Play } from "lucide-react";
 
 export function VideoTile({
   work,
@@ -70,11 +69,6 @@ export function VideoTile({
         )}
         {/* dark vignette */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[color:var(--ink-bg)]/40" />
-        {/* play mark */}
-        <div className="absolute bottom-3 right-3 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[color:var(--ink-fg)] opacity-70 group-hover:opacity-100 transition-opacity">
-          <Play className="size-3 fill-current" />
-          play
-        </div>
       </div>
       {caption && (work.title || work.year || work.role) && (
         <div className="mt-3 flex flex-wrap gap-x-4 font-mono text-[10px] uppercase tracking-[0.18em] text-[color:var(--ink-fg)]/60">

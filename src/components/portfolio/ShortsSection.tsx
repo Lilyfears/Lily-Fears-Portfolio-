@@ -37,7 +37,7 @@ export function ShortsSection({
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           >
-            <VideoTile work={item} onOpen={onOpen} caption />
+            <VideoTile work={item} onOpen={onOpen} />
           </motion.div>
         ))}
       </div>
