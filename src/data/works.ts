@@ -231,7 +231,7 @@ export function embedUrl(w: Work, opts: { preview?: boolean } = {}): string {
   const base = `https://www.youtube.com/embed/${w.videoId}`;
   const params = preview
     ? `mute=1&autoplay=1&controls=0&loop=1&playlist=${w.videoId}&modestbranding=1&playsinline=1&rel=0`
-    : `autoplay=1&rel=0&playsinline=1&controls=1&origin=https://lilyxfears.com`;
+    : `autoplay=1&rel=0&playsinline=1&controls=1&origin=https://www.lilyxfears.com`;
   return `${base}?${params}`;
 }
 
