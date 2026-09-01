@@ -84,8 +84,8 @@ export const categories: Category[] = [
     title: "Music Videos",
     kicker: "RHYTHM · ENERGY",
     items: [
-      { id: "kZqPIIBZ4tg", platform: "youtube", videoId: "kZqPIIBZ4tg", orientation: "horizontal" },
-      { id: "Ma-RHYU3LOA", platform: "youtube", videoId: "Ma-RHYU3LOA", orientation: "horizontal" },
+      { id: "kZqPIIBZ4tg", platform: "youtube", videoId: "kZqPIIBZ4tg", orientation: "horizontal", title: "RUSTAGE - DREAMING ON (Official Music Video)" },
+      { id: "Ma-RHYU3LOA", platform: "youtube", videoId: "Ma-RHYU3LOA", orientation: "horizontal", title: "Grace Power - The Kill (Official Music Video)" },
     ],
   },
   {
@@ -94,7 +94,7 @@ export const categories: Category[] = [
     title: "Trailer",
     kicker: "THRILLER",
     items: [
-      { id: "6bqtZcvfuws", platform: "youtube", videoId: "6bqtZcvfuws", orientation: "horizontal" },
+      { id: "6bqtZcvfuws", platform: "youtube", videoId: "6bqtZcvfuws", orientation: "horizontal", title: "HERE BEFORE Trailer (2022) Andrea Riseborough, Thriller Movie" },
     ],
   },
   {
@@ -103,10 +103,10 @@ export const categories: Category[] = [
     title: "Alo Yoga",
     kicker: "FASHION•ATHLETICS",
     items: [
-      { id: "6UIHj_-YPEE", platform: "youtube", videoId: "6UIHj_-YPEE", orientation: "horizontal" },
-      { id: "2QSdVPY2688", platform: "youtube", videoId: "2QSdVPY2688", orientation: "horizontal" },
-      { id: "Sry0blCEB8U", platform: "youtube", videoId: "Sry0blCEB8U", orientation: "horizontal" },
-      { id: "SdtKDy8-Ph4", platform: "youtube", videoId: "SdtKDy8-Ph4", orientation: "horizontal" },
+      { id: "6UIHj_-YPEE", platform: "youtube", videoId: "6UIHj_-YPEE", orientation: "horizontal", title: "Move into Wellness | Jimmy Butler | Recovery" },
+      { id: "2QSdVPY2688", platform: "youtube", videoId: "2QSdVPY2688", orientation: "horizontal", title: "A Day in the Life | Georgia May Jagger" },
+      { id: "Sry0blCEB8U", platform: "youtube", videoId: "Sry0blCEB8U", orientation: "horizontal", title: "Alo Atelier 2023 | Alo Wellness Club" },
+      { id: "SdtKDy8-Ph4", platform: "youtube", videoId: "SdtKDy8-Ph4", orientation: "horizontal", title: "Alo Runners Global Run Club" },
     ],
   },
   {
@@ -115,11 +115,11 @@ export const categories: Category[] = [
     title: "Jubilee",
     kicker: "REALITY·VIRAL",
     items: [
-      { id: "u4gEBRSKi2E", platform: "youtube", videoId: "u4gEBRSKi2E", orientation: "horizontal" },
-      { id: "BlpiRAAVB1A", platform: "youtube", videoId: "BlpiRAAVB1A", orientation: "horizontal" },
-      { id: "3Eu80w5W2GI", platform: "youtube", videoId: "3Eu80w5W2GI", orientation: "horizontal" },
-      { id: "k94sfLpRTpY", platform: "youtube", videoId: "k94sfLpRTpY", orientation: "horizontal" },
-      { id: "DbSah0vwwrU", platform: "youtube", videoId: "DbSah0vwwrU", orientation: "horizontal" },
+      { id: "u4gEBRSKi2E", platform: "youtube", videoId: "u4gEBRSKi2E", orientation: "horizontal", title: "What Defines Health? Fit Women vs. Overweight Women | Middle Ground" },
+      { id: "BlpiRAAVB1A", platform: "youtube", videoId: "BlpiRAAVB1A", orientation: "horizontal", title: "1 woman lets 25 men shoot their shot" },
+      { id: "3Eu80w5W2GI", platform: "youtube", videoId: "3Eu80w5W2GI", orientation: "horizontal", title: "6 Identical Twins vs 2 Fake | Odd One Out" },
+      { id: "k94sfLpRTpY", platform: "youtube", videoId: "k94sfLpRTpY", orientation: "horizontal", title: "7 girls vs 7 guys | choose your crush" },
+      { id: "DbSah0vwwrU", platform: "youtube", videoId: "DbSah0vwwrU", orientation: "horizontal", title: "Who's Autistic? Test Your Radar" },
     ],
   },
   {
@@ -128,12 +128,12 @@ export const categories: Category[] = [
     title: "Featured",
     kicker: "NEW WORK",
     items: [
-      { id: "jw9u9pgFNDw", platform: "youtube", videoId: "jw9u9pgFNDw", orientation: "horizontal" },
-      { id: "GXHiis7Zt8I", platform: "youtube", videoId: "GXHiis7Zt8I", orientation: "horizontal" },
-      { id: "4RIzWIqF5s8", platform: "youtube", videoId: "4RIzWIqF5s8", orientation: "horizontal" },
-      { id: "0QCCS2eP3Q0", platform: "youtube", videoId: "0QCCS2eP3Q0", orientation: "horizontal" },
-      { id: "_a0d95ewlzY", platform: "youtube", videoId: "_a0d95ewlzY", orientation: "horizontal" },
-      { id: "yW-ZpSDu_b4", platform: "youtube", videoId: "yW-ZpSDu_b4", orientation: "horizontal" },
+      { id: "jw9u9pgFNDw", platform: "youtube", videoId: "jw9u9pgFNDw", orientation: "horizontal", title: "Broken Cadence | Short Film | Canon USA" },
+      { id: "GXHiis7Zt8I", platform: "youtube", videoId: "GXHiis7Zt8I", orientation: "horizontal", title: "Frozen Runner | ALO" },
+      { id: "4RIzWIqF5s8", platform: "youtube", videoId: "4RIzWIqF5s8", orientation: "horizontal", title: "See You Next Summer | Short Film" },
+      { id: "0QCCS2eP3Q0", platform: "youtube", videoId: "0QCCS2eP3Q0", orientation: "horizontal", title: "Freakbeast | Short Film" },
+      { id: "_a0d95ewlzY", platform: "youtube", videoId: "_a0d95ewlzY", orientation: "horizontal", title: "Sapphic Steal｜Animation Short" },
+      { id: "yW-ZpSDu_b4", platform: "youtube", videoId: "yW-ZpSDu_b4", orientation: "horizontal", title: "A Prickly Pair｜Animation Short" },
     ],
   },
   {
@@ -231,6 +231,13 @@ export function embedUrl(w: Work, opts: { preview?: boolean } = {}): string {
   const base = `https://www.youtube.com/embed/${w.videoId}`;
   const params = preview
     ? `mute=1&autoplay=1&controls=0&loop=1&playlist=${w.videoId}&modestbranding=1&playsinline=1&rel=0`
-    : `autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+    : `autoplay=1&rel=0&modestbranding=1&playsinline=1&controls=1&autohide=2`;
   return `${base}?${params}`;
 }
+
+/** Returns the path to the local hover-preview MP4 for horizontal works, or null if none. */
+export function hoverVideoUrl(w: Work): string | null {
+  if (w.orientation !== "horizontal") return null;
+  return `/hover/hover-${w.videoId}.mp4`;
+}
+

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { categories, horizontalGalleryRows, embedUrl, posterUrl, type Work, type TileSize } from "@/data/works";
+import { useRef, useState } from "react";
+import { categories, horizontalGalleryRows, embedUrl, hoverVideoUrl, posterUrl, type Work, type TileSize } from "@/data/works";
 
 const allWorks: Work[] = categories.filter(c => c.id !== "shorts").flatMap((c) => c.items);
 const workById = new Map(allWorks.map(w => [w.id, w]));
@@ -31,25 +31,45 @@ export function MosaicSection({ onOpen }: { onOpen: (w: Work) => void }) {
 
 function FloatingTile({
   work,
+  size,
   onOpen,
 }: {
   work: Work;
+  size: TileSize;
   onOpen: (w: Work) => void;
 }) {
   const [hover, setHover] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const canHover =
     typeof window !== "undefined" &&
     window.matchMedia("(hover: hover) and (prefers-reduced-motion: no-preference)").matches;
   const poster = posterUrl(work);
+  const hoverSrc = hoverVideoUrl(work); // non-null only for horizontal
+
+  function handleMouseEnter() {
+    if (!canHover) return;
+    setHover(true);
+    if (hoverSrc && videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
+  }
+
+  function handleMouseLeave() {
+    setHover(false);
+    if (hoverSrc && videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  }
 
   return (
     <button
       type="button"
       onClick={() => onOpen(work)}
-      onMouseEnter={() => canHover && setHover(true)}
-      onMouseLeave={() => setHover(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       aria-label="Play video"
-      style={{ flexBasis: widthFor(work) }}
+      style={{ flexBasis: "34%" }}
       className="group relative block min-w-[140px] overflow-hidden bg-[color:var(--ink-bg)] shadow-[0_30px_60px_-30px_rgba(0,0,0,0.8)] transition-[transform,box-shadow] duration-[600ms] ease-out hover:-translate-y-1 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.95)] focus:outline-none focus-visible:ring-1 focus-visible:ring-[color:var(--ink-ember)]"
     >
       <div
@@ -83,14 +103,20 @@ function FloatingTile({
             className="absolute inset-0 h-full w-full object-cover brightness-[0.78] transition-[transform,filter] duration-[1200ms] ease-out group-hover:scale-[1.03] group-hover:brightness-100"
           />
         ) : null}
-        {hover && work.platform !== "instagram" && work.platform !== "mp4" && (
-          <iframe
-            src={embedUrl(work, { preview: true })}
-            title=""
+        {/* Horizontal: native MP4 hover preview */}
+        {hoverSrc && (
+          <video
+            ref={videoRef}
+            src={hoverSrc}
+            preload="none"
+            muted
+            playsInline
+            loop
             tabIndex={-1}
             aria-hidden
-            allow="autoplay; muted"
-            className="pointer-events-none absolute inset-0 h-full w-full scale-[1.35]"
+            className={`pointer-events-none absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${
+              hover ? "opacity-100" : "opacity-0"
+            }`}
           />
         )}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent to-[color:var(--ink-bg)]/30" />

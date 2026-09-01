@@ -26,7 +26,7 @@ export function VideoModal({
           <X className="size-4" /> close
         </button>
         {work && (
-          <div className="pointer-events-none flex h-full w-full items-center justify-center p-6 md:p-12">
+          <div className="pointer-events-none flex h-full w-full flex-col items-center justify-center p-6 md:p-12">
             <div
               onClick={(e) => e.stopPropagation()}
               className={`pointer-events-auto relative w-full ${
@@ -55,6 +55,14 @@ export function VideoModal({
                 />
               )}
             </div>
+            {work.orientation === "horizontal" && work.title && (
+              <div
+                onClick={(e) => e.stopPropagation()}
+                className="pointer-events-auto mt-3 w-full max-w-[min(1600px,calc(100vh-8rem)*16/9)] font-mono text-[11px] uppercase tracking-[0.2em] text-white/60"
+              >
+                {work.title}
+              </div>
+            )}
           </div>
         )}
       </DialogContent>
