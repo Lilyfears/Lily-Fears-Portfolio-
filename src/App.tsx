@@ -34,7 +34,7 @@ export default function App() {
         )}
 
         <section id="contact" className="scroll-mt-20">
-          <div className="mx-auto flex max-w-[680px] flex-col justify-center px-6 py-10 md:py-20 md:px-0">
+          <div className="mx-auto flex max-w-[680px] flex-col justify-center px-6 py-4 md:py-4 md:px-0">
             <ul className="grid gap-6 font-mono text-[11px] uppercase tracking-[0.25em] text-[color:var(--ink-fg)]/70">
               <li className="flex items-baseline justify-between gap-4">
                 <span className="text-[color:var(--ink-fg)]/40">email</span>
