@@ -224,8 +224,12 @@ export function posterUrl(w: Work): string | null {
   return `https://i.ytimg.com/vi/${w.videoId}/hqdefault.jpg`;
 }
 
-export function embedUrl(w: Work, opts: { preview?: boolean } = {}): string {
-  const { preview = false } = opts;
+export function embedUrl(
+  w: Work,
+  opts: { preview?: boolean; autoplay?: boolean } = {},
+): string {
+  const { preview = false, autoplay = true } = opts;
+  const ap = autoplay ? 1 : 0;
 
   if (w.platform === "instagram") {
     return `https://www.instagram.com/reel/${w.videoId}/embed`;
@@ -234,14 +238,14 @@ export function embedUrl(w: Work, opts: { preview?: boolean } = {}): string {
   if (w.platform === "vimeo") {
     const params = preview
       ? "background=1&muted=1&autoplay=1&loop=1"
-      : "autoplay=1&title=0&byline=0&portrait=0";
+      : `autoplay=${ap}&title=0&byline=0&portrait=0`;
     return `https://player.vimeo.com/video/${w.videoId}?${params}`;
   }
 
   const base = `https://www.youtube.com/embed/${w.videoId}`;
   const params = preview
     ? `mute=1&autoplay=1&controls=0&loop=1&playlist=${w.videoId}&modestbranding=1&playsinline=1&rel=0`
-    : `autoplay=1&rel=0&playsinline=1&controls=1&origin=https://www.lilyxfears.com`;
+    : `autoplay=${ap}&rel=0&playsinline=1&controls=1&origin=https://www.lilyxfears.com`;
   return `${base}?${params}`;
 }
 

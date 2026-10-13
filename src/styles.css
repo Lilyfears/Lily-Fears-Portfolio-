@@ -13,6 +13,7 @@
   --font-serif: "Fraunces", ui-serif, Georgia, serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --font-rx100: "RX100";
+  --font-grotesk: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
@@ -35,6 +36,29 @@ body {
 ::selection {
   background: var(--ink-ember);
   color: var(--ink-bg);
+}
+
+/* /tech landing page palette */
+:root {
+  --tech-bg: #15171a;
+  --tech-raised: #1d2024;
+  --tech-line: #2a2d32;
+  --tech-head: #f2f1ee;
+  --tech-body: #a1a4aa;
+  --tech-dim: #7d8188;
+  --tech-blue: #6b9cff;
+  --tech-blue-solid: #2f66e8;
+}
+
+html[data-page="tech"],
+html[data-page="tech"] body {
+  background-color: var(--tech-bg);
+  color: var(--tech-body);
+}
+
+html[data-page="tech"] ::selection {
+  background: var(--tech-blue-solid);
+  color: #fff;
 }
 
 @custom-variant dark (&:is(.dark *));
